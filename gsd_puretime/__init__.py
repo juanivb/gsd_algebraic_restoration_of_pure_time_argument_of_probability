@@ -61,6 +61,20 @@ from typing import Tuple, Optional
 
 import numpy as np
 
+# Sudjianto rotor extension — Spin(3) compact representation of the
+# SVD of Π̂. Provides "boundedness for free" on the rotation part of
+# any linear estimator. See gsd_puretime/rotor.py for details and
+# the README "Rotor extension" section for motivation.
+from gsd_puretime.rotor import (
+    Rotor3,
+    rotation_matrix_to_rotor,
+    rotor_to_rotation_matrix,
+    rotor_apply,
+    rotor_compose,
+    svd_to_rotor,
+    rotor_emergent_rank,
+)
+
 
 __all__ = [
     "ptls_universal",

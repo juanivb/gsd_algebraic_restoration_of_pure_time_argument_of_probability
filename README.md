@@ -82,6 +82,50 @@ the 13 features of the multivariate quadratic basis.
 
 ---
 
+## Rotor extension (Sudjianto bridge)
+
+Following a personal communication with Agus Sudjianto (May 2026),
+the library ships a rotor representation of the SVD of $\hat\Pi$ in
+$\mathrm{Spin}(3) \subset \mathrm{Cl}(3,0)$. The construction
+converts the rotation matrix $UV^\top$ from the SVD of any
+$3\times 3$ matrix into a unit-norm rotor via the standard axis-
+angle / half-angle formula. Three properties matter:
+
+1. **Boundedness for free.** Spin(3) is a compact Lie group, so the
+   rotor norm is identically 1 by construction. Verified in
+   `tests/test_rotor.py` across 40 orders of magnitude in input
+   scale (10⁻²⁰ to 10²⁰): rotor norm = 1.000000… exact.
+
+2. **The magnitude lives elsewhere.** The singular spectrum σ
+   carries any divergent scale (e.g.\ explosive AR growth); the
+   rotation lives bounded in Spin(3). On a 3-D panel where one
+   component grows to 10³⁸, the rotors stay at unit norm to floating-
+   point precision while σ absorbs the scale.
+
+3. **Extends beyond d=3.** The same construction lifts to Spin(d)
+   for arbitrary d via the standard exponential of bivectors. This
+   is the path Sudjianto identified for scaling Cl(d,0) computation
+   beyond the d=3 ceiling that the Geometric Takens theorem of the
+   programme imposes on identification.
+
+```python
+from gsd_puretime import ptmv, ec_matrix, svd_to_rotor
+
+A, B = ptmv(Y_panel)            # multivariate forward equation
+M    = ec_matrix(A, B)          # error-correction matrix Π̂
+
+rotor_L, sigma, rotor_R = svd_to_rotor(M)
+print(rotor_L)   # → ‖rotor_L‖ = 1.0000000000 even on explosive data
+```
+
+The next iteration of the manuscript will incorporate the rotor
+construction in §6.5 (where the quadratic extension's blowup under
+explosive extrapolation was the open weakness) and as the formal
+mechanism for the companion theoretical paper on non-abelian
+characteristic functions on Spin(3).
+
+---
+
 ## Quick start
 
 ```bash
@@ -207,6 +251,34 @@ would carry weight.
 The author acknowledges with gratitude the freedom to combine
 academic reflection with industry engagement that both institutions
 made possible.
+
+---
+
+## Acknowledgements
+
+The author thanks the following colleagues whose feedback has shaped
+the work materially:
+
+**Agus Sudjianto** — for pointing out that the rotation part of the
+SVD of $\hat\Pi$ admits a rotor representation in the compact group
+$\mathrm{Spin}(3) \subset \mathrm{Cl}(3,0)$, and that this
+representation extends naturally beyond $d = 3$. The construction
+shipped in `gsd_puretime/rotor.py` and described in the *Rotor
+extension* section of this README is a direct consequence of his
+suggestion; the empirical verification of "boundedness for free"
+across forty orders of magnitude in input scale would not have been
+attempted without his pointer.
+
+**Dr.\ Darío Ezequiel Díaz** — for sustained methodological feedback
+on the programme's foundations and on successive iterations of the
+manuscript.
+
+**Esteban Elia** — for early and incisive feedback on the project as
+it was taking shape, and for thoughtful engagement at several
+critical points along the way.
+
+The opinions, errors, and remaining infelicities are exclusively the
+author's.
 
 ---
 
