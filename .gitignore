@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Notebook build artefact — kept private; the .ipynb is the deliverable
+notebooks/build_notebook.py
+notebooks/.ipynb_checkpoints/
+
+# Private working files — NEVER commit these
+outreach/
+PUSH_INSTRUCTIONS.md
+*.private.md
+DRAFT_*.md
+
+# Paper sources (only the .pdf is shipped publicly; the .tex stays private)
+paper/*.tex
+
+# LaTeX intermediates
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.bbl
+*.blg
+*.run.xml
+*.bcf
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
