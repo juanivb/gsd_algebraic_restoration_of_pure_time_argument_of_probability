@@ -1,4 +1,5 @@
-# gsd-puretime — The Algebraic Restoration of the Pure-Time Argument of Probability
+# On The Algebraic Restoration of the Pure-Time Argument of Probability
+## Geometric Signal Dynamics (GSD) Research Programme
 
 > Companion code to the paper
 > **On the Algebraic Restoration of the Pure-Time Argument of Probability**
@@ -231,14 +232,14 @@ intellectual and material support of two institutions, to whom the
 author is indebted:
 
 **Departamento de Economía, Pontificia Universidad Católica
-Argentina (UCA).** The programme of which this repository is one
+Argentina [(UCA)](https://uca.edu.ar/es/facultad-de-teresa-de-avila/departamento-de-ciencias-economicas).** The programme of which this repository is one
 piece took shape over several years of teaching, supervision, and
 quiet encouragement at the Department of Economics of the UCA. The
 academic environment that allowed the work to mature into a coherent
 research arc is owed entirely to the Department's commitment to
 deep, slow scholarship in an era that does not always reward it.
 
-**Research Lab — Chapter Data, MODO.** The empirical and
+**Research Lab — Chapter Data, [MODO](https://ar.linkedin.com/company/modo-arg).** The empirical and
 computational backbone of the project — from infrastructure to
 reproducibility discipline to the operational test of every claim
 on real-world data — was developed inside the Chapter Data Research
